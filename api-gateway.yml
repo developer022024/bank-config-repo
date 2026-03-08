@@ -11,6 +11,9 @@ spring:
           issuer-uri: http://localhost:8080
   cloud:
     gateway:
+      httpclient:
+        connect-timeout: 2000      # 2s to establish connection to downstream service
+        response-timeout: 10s      # 10s to get full response from downstream service
       routes:
         - id: transaction-service
           uri: lb://transaction-service
