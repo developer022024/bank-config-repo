@@ -14,10 +14,17 @@ spring:
   cloud:
     gateway:
       routes:
+
         - id: customer-service
           uri: lb://customer-service
           predicates:
-            - Path=/customers/**   # your endpoints
+            - Path=/customers/**
+
+        - id: transaction-service
+          uri: lb://transaction-service
+          predicates:
+            - Path=/transactions,/transactions/**
+
 eureka:
   client:
     service-url:
